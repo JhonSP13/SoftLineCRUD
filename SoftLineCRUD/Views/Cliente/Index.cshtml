@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ClienteModel>
+@{
     ViewData["Title"] = "Clientes";
 }
 <div class="center">
@@ -21,48 +22,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-                <td></td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <a role="button" class="btn btn-outline-warning" asp-controller="Cliente" asp-action="EditarCliente">Editar</a>
-                        <a role="button" class="btn btn-outline-primary">Visualizar</a>
-                        <a role="button" class="btn btn-outline-danger" asp-controller="Cliente" asp-action="ExcluirCliente">Excluir</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>fat</td>
-                <td></td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <a role="button" class="btn btn-outline-warning" asp-controller="Cliente" asp-action="EditarCliente">Editar</a>
-                        <a role="button" class="btn btn-outline-primary">Visualizar</a>
-                        <a role="button" class="btn btn-outline-danger" asp-controller="Cliente" asp-action="ExcluirCliente">Excluir</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>John</td>
-                <td>Doe</td>
-                <td>social</td>
-                <td></td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <a role="button" class="btn btn-outline-warning" asp-controller="Cliente" asp-action="EditarCliente">Editar</a>
-                        <a role="button" class="btn btn-outline-primary">Visualizar</a>
-                        <a role="button" class="btn btn-outline-danger" asp-controller="Cliente" asp-action="ExcluirCliente">Excluir</a>
-                    </div>
-                </td>
-            </tr>
+            @if(Model != null && Model.Any())
+            {
+                foreach(ClienteModel cliente in Model)
+                {
+                    <tr>
+                        <th scope="row">@cliente.Id</th>
+                        <td>@cliente.CodigoCliente</td>
+                        <td>@cliente.Nome</td>
+                        <td>@cliente.Fantasia</td>
+                        <td>@cliente.Documento</td>
+                        <td>@cliente.Endereco</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                <a role="button" class="btn btn-outline-warning" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="EditarCliente">Editar</a>
+                                <a role="button" class="btn btn-outline-primary" asp-route-id="@cliente.Id">Visualizar</a>
+                                <a role="button" class="btn btn-outline-danger" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="ExcluirCliente">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+               }         
+            }
         </tbody>
     </table>
 </div>

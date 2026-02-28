@@ -1,30 +1,31 @@
-﻿@{
+﻿@model ClienteModel
+@{
     ViewData["Title"] = "Adicionar Cliente";
 }
 <div class="center">
     <div class="text-center">
         <h1 class="display-4">Adicionar Cliente</h1>
     </div>
-    <form>
+    <form asp-controller="cliente" asp-action="AdicionarCliente" method="post">
         <div class="mb-3">
             <label for="codigo" class="form-label">Código</label><br />
-            <input type="text" class="form-text" id="codigo">
+            <input type="text" asp-for="CodigoCliente" class="form-text" id="codigo">
         </div>
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label><br />
-            <input type="text" class="form-text" id="nome">
+            <input type="text" asp-for="Nome" class="form-text" id="nome">
         </div>
         <div class="mb-3">
             <label for="fantasia" class="form-label">Fantasia</label><br />
-            <input type="text" class="form-text" id="fantasia">
+            <input type="text" asp-for="Fantasia" class="form-text" id="fantasia">
         </div>
         <div class="mb-3">
             <label for="documento" class="form-label">Documento</label><br />
-            <input type="text" class="form-text" id="documento">
+            <input type="text" asp-for="Documento" class="form-text" id="documento">
         </div>
         <div class="mb-3">
             <label for="endereco" class="form-label">Endereço</label><br />
-            <input type="text" class="form-text" id="endereco">
+            <input type="text" asp-for="Endereco" class="form-text" id="endereco">
         </div>
         
         <button type="submit" class="btn btn-primary">Adicionar</button>

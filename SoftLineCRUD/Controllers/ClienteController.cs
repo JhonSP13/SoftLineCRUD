@@ -1,12 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SoftLineCRUD.Models;
+using SoftLineCRUD.Repository;
 
 namespace SoftLineCRUD.Controllers
 {
     public class ClienteController : Controller
     {
+        private readonly IClienteRepository _clienteRepository;
+        public ClienteController(IClienteRepository clienteRepository)
+        {
+            _clienteRepository = clienteRepository;
+        }
         public IActionResult Index()
         {
-            return View();
+            List<ClienteModel> clientes = _clienteRepository.ListarClientes();
+            return View(clientes);
         }
 
         public IActionResult AdicionarCliente()
@@ -27,6 +35,13 @@ namespace SoftLineCRUD.Controllers
         public IActionResult ExcluirCliente()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult AdicionarCliente(ClienteModel cliente)
+        {
+            _clienteRepository.AdicionarCliente(cliente);
+            return RedirectToAction("Index");
         }
     }
 }
