@@ -7,5 +7,6 @@ namespace SoftLineCRUD.Data
         {
         }
         public DbSet<Models.ClienteModel> Clientes { get; set; }
+        public DbSet<Models.ProdutoModel> Produtos { get; set; }
     }
 }

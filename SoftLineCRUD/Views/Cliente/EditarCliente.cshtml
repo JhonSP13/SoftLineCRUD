@@ -1,33 +1,39 @@
-﻿@{
+﻿@model ClienteModel
+@{
     ViewData["Title"] = "Editar Cliente";
 }
 <div class="center">
     <div class="text-center">
         <h1 class="display-4">Editar Cliente</h1>
     </div>
-    <form class="text-center">
+    <form asp-controller="cliente" asp-action="EditarCliente" method="post">
         <div class="mb-3">
             <label for="codigo" class="form-label">Código</label><br />
-            <input type="text" class="form-text" id="codigo">
+            <input type="text" asp-for="CodigoCliente" class="form-text" id="codigo">
+            @Html.ValidationMessageFor(x => x.CodigoCliente)
         </div>
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label><br />
-            <input type="text" class="form-text" id="nome">
+            <input type="text" asp-for="Nome" class="form-text" id="nome">
+            @Html.ValidationMessageFor(x => x.Nome)
         </div>
         <div class="mb-3">
             <label for="fantasia" class="form-label">Fantasia</label><br />
-            <input type="text" class="form-text" id="fantasia">
+            <input type="text" asp-for="Fantasia" class="form-text" id="fantasia">
+            @Html.ValidationMessageFor(x => x.Fantasia)
         </div>
         <div class="mb-3">
             <label for="documento" class="form-label">Documento</label><br />
-            <input type="text" class="form-text" id="documento">
+            <input type="text" asp-for="Documento" class="form-text" id="documento">
+            @Html.ValidationMessageFor(x => x.Documento)
         </div>
         <div class="mb-3">
             <label for="endereco" class="form-label">Endereço</label><br />
-            <input type="text" class="form-text" id="endereco">
+            <input type="text" asp-for="Endereco" class="form-text" id="endereco">
+            @Html.ValidationMessageFor(x => x.Endereco)
         </div>
 
-        <button type="submit" class="btn btn-primary">Adicionar</button>
+        <button type="submit" class="btn btn-primary">Alterar</button>
         <a class="btn btn-secondary" asp-controller="Cliente" asp-action="Index" role="button">Voltar</a>
     </form>
 </div>

@@ -1,0 +1,52 @@
+﻿@model List<ProdutoModel>
+@{
+    ViewData["Title"] = "Produtos";
+}
+<div class="center">
+    <div class="text-center">
+        <h1 class="display-4">Produtos</h1>
+        <p>Lista de produtos:</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a class="btn btn-outline-dark" role="button" asp-controller="Produto" asp-action="AdicionarProduto">Adicionar Produto</a>
+            <br />
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Código</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Código de Barras</th>
+                <th scope="col">Valor de Venda</th>
+                <th scope="col">Peso Bruto</th>
+                <th scope="col">Peso Liquido</th>
+                <th scope="col" class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (ProdutoModel produto in Model)
+                {
+                    <tr>
+                        <th scope="row">@produto.Id</th>
+                        <td>@produto.CodigoProduto</td>
+                        <td>@produto.Descricao</td>
+                        <td>@produto.CodBarras</td>
+                        <td>@produto.ValorVenda</td>
+                        <td>@produto.PesoBruto</td>
+                        <td>@produto.PesoLiquido</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                <a role="button" class="btn btn-outline-warning" asp-route-id="@produto.Id" asp-controller="produto" asp-action="Editarproduto">Editar</a>
+                                <a role="button" class="btn btn-outline-primary" asp-route-id="@produto.Id">Visualizar</a>
+                                <a role="button" class="btn btn-outline-danger" asp-route-id="@produto.Id" asp-controller="produto" asp-action="Excluirproduto">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

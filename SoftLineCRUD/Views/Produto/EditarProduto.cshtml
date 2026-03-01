@@ -1,0 +1,38 @@
+﻿@model ProdutoModel
+@{
+    ViewData["Title"] = "Editar Produto";
+}
+<div class="center">
+    <div class="text-center">
+        <h1 class="display-4">Editar Produto</h1>
+    </div>
+    <form asp-controller="Produto" asp-action="EditarProduto" method="post">
+        <div class="mb-3">
+            <label for="codigo" class="form-label">Código</label><br />
+            <input type="text" asp-for="CodigoProduto" class="form-text" id="codigo">
+        </div>
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label><br />
+            <input type="text" asp-for="Descricao" class="form-text" id="descricao">
+        </div>
+        <div class="mb-3">
+            <label for="codBarras" class="form-label">Código de Barras</label><br />
+            <input type="text" asp-for="CodBarras" class="form-text" id="codBarras">
+        </div>
+        <div class="mb-3">
+            <label for="valorVenda" class="form-label">Valor de Venda</label><br />
+            <input type="text" asp-for="ValorVenda" class="form-text" id="valorVenda">
+        </div>
+        <div class="mb-3">
+            <label for="pesoBruto" class="form-label">Peso Bruto</label><br />
+            <input type="text" asp-for="PesoBruto" class="form-text" id="pesoBruto">
+        </div>
+        <div class="mb-3">
+            <label for="pesoLiquido" class="form-label">Peso Liquido</label><br />
+            <input type="text" asp-for="PesoLiquido" class="form-text" id="pesoLiquido">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Alterar</button>
+        <a class="btn btn-secondary" asp-controller="Produto" asp-action="Index" role="button">Voltar</a>
+    </form>
+</div>

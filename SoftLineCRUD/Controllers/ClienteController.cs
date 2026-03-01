@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using SoftLineCRUD.Models;
 using SoftLineCRUD.Repository;
 
@@ -22,9 +23,10 @@ namespace SoftLineCRUD.Controllers
             return View();
         }
 
-        public IActionResult EditarCliente()
+        public IActionResult EditarCliente(int Id)
         {
-            return View();
+            ClienteModel cliente = _clienteRepository.ListarClientePorId(Id);
+            return View(cliente);
         }
 
         public IActionResult VisualizarCliente()
@@ -32,16 +34,74 @@ namespace SoftLineCRUD.Controllers
             return View();
         }
 
-        public IActionResult ExcluirCliente()
+        public IActionResult ExcluirCliente(int Id)
         {
-            return View();
+            ClienteModel cliente = _clienteRepository.ListarClientePorId(Id);
+            return View(cliente);
+        }
+
+        public IActionResult ConfirmarExclusao(int Id)
+        
+        {
+            try
+            {
+                bool apagado = _clienteRepository.ConfirmarExclusao(Id);
+                if (apagado)
+                {                     TempData["MensagemSucesso"] = "Cliente excluído com sucesso!";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Erro ao excluir cliente!";
+
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao excluir cliente: {erro.Message}";
+                return RedirectToAction("Index");
+                
+            }
         }
 
         [HttpPost]
         public IActionResult AdicionarCliente(ClienteModel cliente)
         {
-            _clienteRepository.AdicionarCliente(cliente);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _clienteRepository.AdicionarCliente(cliente);
+                    TempData["MensagemSucesso"] = "Cliente adicionado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                return View(cliente);
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao adicionar cliente: {erro.Message}";
+                return RedirectToAction("Index");
+            }
+            }
+
+            [HttpPost]
+        public IActionResult EditarCliente(ClienteModel cliente)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _clienteRepository.EditarCliente(cliente);
+                    TempData["MensagemSucesso"] = "Cliente alterado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                return View(cliente);
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao alterar cliente: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
     }
 }
