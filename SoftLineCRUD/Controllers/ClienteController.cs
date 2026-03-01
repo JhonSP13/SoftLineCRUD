@@ -40,8 +40,7 @@ namespace SoftLineCRUD.Controllers
             return View(cliente);
         }
 
-        public IActionResult ConfirmarExclusao(int Id)
-        
+        public IActionResult ConfirmarExclusao(int Id)       
         {
             try
             {
@@ -82,7 +81,7 @@ namespace SoftLineCRUD.Controllers
                 TempData["MensagemErro"] = $"Erro ao adicionar cliente: {erro.Message}";
                 return RedirectToAction("Index");
             }
-            }
+        }
 
             [HttpPost]
         public IActionResult EditarCliente(ClienteModel cliente)

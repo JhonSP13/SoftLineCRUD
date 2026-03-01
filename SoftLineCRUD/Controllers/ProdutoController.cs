@@ -41,22 +41,66 @@ namespace SoftLineCRUD.Controllers
 
         public IActionResult ConfirmarExclusao(int Id)
         {
-            _produtoRepository.ConfirmarExclusao(Id);
-            return RedirectToAction("Index");
+            try
+            {
+                bool apagado = _produtoRepository.ConfirmarExclusao(Id);
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = "Produto excluído com sucesso!";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Erro ao excluir produto!";
+
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao excluir produto: {erro.Message}";
+                return RedirectToAction("Index");
+
+            }
         }
 
         [HttpPost]
         public IActionResult AdicionarProduto(ProdutoModel produto)
         {
-            _produtoRepository.AdicionarProduto(produto);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _produtoRepository.AdicionarProduto(produto);
+                    TempData["MensagemSucesso"] = "Produto adicionado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                return View(produto);
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao adicionar produto: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public IActionResult EditarProduto(ProdutoModel produto)
         {
-            _produtoRepository.EditarProduto(produto);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _produtoRepository.EditarProduto(produto);
+                    TempData["MensagemSucesso"] = "Produto alterado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                return View(produto);
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao alterar produto: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
     }
 }
