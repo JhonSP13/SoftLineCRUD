@@ -11,6 +11,7 @@
             <br />
         </div>
     </div>
+    <br />
     @if (TempData["MensagemSucesso"] != null)
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -53,8 +54,7 @@
                         <td>@produto.PesoLiquido</td>
                         <td class="text-center">
                             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                <a role="button" class="btn btn-outline-warning" asp-route-id="@produto.Id" asp-controller="produto" asp-action="Editarproduto">Editar</a>
-                                <a role="button" class="btn btn-outline-primary" asp-route-id="@produto.Id">Visualizar</a>
+                                <a role="button" class="btn btn-outline-primary" asp-route-id="@produto.Id" asp-controller="produto" asp-action="Editarproduto">Editar</a>
                                 <a role="button" class="btn btn-outline-danger" asp-route-id="@produto.Id" asp-controller="produto" asp-action="Excluirproduto">Excluir</a>
                             </div>
                         </td>

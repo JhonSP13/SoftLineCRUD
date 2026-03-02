@@ -2,38 +2,40 @@
 @{
     ViewData["Title"] = "Editar Cliente";
 }
-<div class="center">
-    <div class="text-center">
-        <h1 class="display-4">Editar Cliente</h1>
-    </div>
-    <form asp-controller="cliente" asp-action="EditarCliente" method="post">
-        <div class="mb-3">
-            <label for="codigo" class="form-label">Código</label><br />
-            <input type="text" asp-for="CodigoCliente" class="form-text" id="codigo">
-            @Html.ValidationMessageFor(x => x.CodigoCliente)
-        </div>
-        <div class="mb-3">
-            <label for="nome" class="form-label">Nome</label><br />
-            <input type="text" asp-for="Nome" class="form-text" id="nome">
-            @Html.ValidationMessageFor(x => x.Nome)
-        </div>
-        <div class="mb-3">
-            <label for="fantasia" class="form-label">Fantasia</label><br />
-            <input type="text" asp-for="Fantasia" class="form-text" id="fantasia">
-            @Html.ValidationMessageFor(x => x.Fantasia)
-        </div>
-        <div class="mb-3">
-            <label for="documento" class="form-label">Documento</label><br />
-            <input type="text" asp-for="Documento" class="form-text" id="documento">
-            @Html.ValidationMessageFor(x => x.Documento)
-        </div>
-        <div class="mb-3">
-            <label for="endereco" class="form-label">Endereço</label><br />
-            <input type="text" asp-for="Endereco" class="form-text" id="endereco">
-            @Html.ValidationMessageFor(x => x.Endereco)
-        </div>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="card shadow p-4" style="width: 500px;">
+        <h2 class="text-center mb-4">Editar Cliente</h2>
+        <form asp-controller="cliente" asp-action="EditarCliente" method="post">
+            <div class="mb-3">
+                <label for="codigo" class="form-label">Código</label><br />
+                <input type="text" asp-for="CodigoCliente" class="form-text form-control w-100" id="codigo">
+                @Html.ValidationMessageFor(x => x.CodigoCliente)
+            </div>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label><br />
+                <input type="text" asp-for="Nome" class="form-text form-control w-100" id="nome">
+                @Html.ValidationMessageFor(x => x.Nome)
+            </div>
+            <div class="mb-3">
+                <label for="fantasia" class="form-label">Fantasia</label><br />
+                <input type="text" asp-for="Fantasia" class="form-text form-control w-100" id="fantasia">
+                @Html.ValidationMessageFor(x => x.Fantasia)
+            </div>
+            <div class="mb-3">
+                <label for="documento" class="form-label">Documento</label><br />
+                <input type="text" asp-for="Documento" class="form-text form-control w-100" id="documento">
+                @Html.ValidationMessageFor(x => x.Documento)
+            </div>
+            <div class="mb-3">
+                <label for="endereco" class="form-label">Endereço</label><br />
+                <input type="text" asp-for="Endereco" class="form-text form-control w-100" id="endereco">
+                @Html.ValidationMessageFor(x => x.Endereco)
+            </div>
 
-        <button type="submit" class="btn btn-primary">Alterar</button>
-        <a class="btn btn-secondary" asp-controller="Cliente" asp-action="Index" role="button">Voltar</a>
-    </form>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-primary">Alterar</button>
+                <a class="btn btn-secondary" asp-controller="Cliente" asp-action="Index" role="button">Voltar</a>
+            </div>
+        </form>
+    </div>
 </div>

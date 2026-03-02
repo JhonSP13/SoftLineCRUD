@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using SoftLineCRUD.Models;
 using SoftLineCRUD.Repository;
 
@@ -29,24 +28,21 @@ namespace SoftLineCRUD.Controllers
             return View(cliente);
         }
 
-        public IActionResult VisualizarCliente()
-        {
-            return View();
-        }
-
         public IActionResult ExcluirCliente(int Id)
         {
             ClienteModel cliente = _clienteRepository.ListarClientePorId(Id);
             return View(cliente);
         }
 
-        public IActionResult ConfirmarExclusao(int Id)       
+        public IActionResult ConfirmarExclusao(int Id)
+
         {
             try
             {
                 bool apagado = _clienteRepository.ConfirmarExclusao(Id);
                 if (apagado)
-                {                     TempData["MensagemSucesso"] = "Cliente excluído com sucesso!";
+                {
+                    TempData["MensagemSucesso"] = "Cliente excluído com sucesso!";
                 }
                 else
                 {
@@ -59,7 +55,7 @@ namespace SoftLineCRUD.Controllers
             {
                 TempData["MensagemErro"] = $"Erro ao excluir cliente: {erro.Message}";
                 return RedirectToAction("Index");
-                
+
             }
         }
 
@@ -83,7 +79,7 @@ namespace SoftLineCRUD.Controllers
             }
         }
 
-            [HttpPost]
+        [HttpPost]
         public IActionResult EditarCliente(ClienteModel cliente)
         {
             try

@@ -28,11 +28,6 @@ namespace SoftLineCRUD.Controllers
             return View(produto);
         }
 
-        public IActionResult VisualizarProduto()
-        {
-            return View();
-        }
-
         public IActionResult ExcluirProduto(int Id)
         {
             ProdutoModel produto = _produtoRepository.ListarProdutoPorId(Id);

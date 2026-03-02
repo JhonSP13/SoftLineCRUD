@@ -2,43 +2,43 @@
 @{
     ViewData["Title"] = "Editar Produto";
 }
-<div class="center">
-    <div class="text-center">
-        <h1 class="display-4">Editar Produto</h1>
-    </div>
-    <form asp-controller="Produto" asp-action="EditarProduto" method="post">
-        <div class="mb-3">
-            <label for="codigo" class="form-label">Código</label><br />
-            <input type="text" asp-for="CodigoProduto" class="form-text" id="codigo">
-            @Html.ValidationMessageFor(x => x.CodigoProduto)
-        </div>
-        <div class="mb-3">
-            <label for="descricao" class="form-label">Descrição</label><br />
-            <input type="text" asp-for="Descricao" class="form-text" id="descricao">
-            @Html.ValidationMessageFor(x => x.Descricao)
-        </div>
-        <div class="mb-3">
-            <label for="codBarras" class="form-label">Código de Barras</label><br />
-            <input type="text" asp-for="CodBarras" class="form-text" id="codBarras">
-            @Html.ValidationMessageFor(x => x.CodBarras)
-        </div>
-        <div class="mb-3">
-            <label for="valorVenda" class="form-label">Valor de Venda</label><br />
-            <input type="text" asp-for="ValorVenda" class="form-text" id="valorVenda">
-            @Html.ValidationMessageFor(x => x.ValorVenda)
-        </div>
-        <div class="mb-3">
-            <label for="pesoBruto" class="form-label">Peso Bruto</label><br />
-            <input type="text" asp-for="PesoBruto" class="form-text" id="pesoBruto">
-            @Html.ValidationMessageFor(x => x.PesoBruto)
-        </div>
-        <div class="mb-3">
-            <label for="pesoLiquido" class="form-label">Peso Liquido</label><br />
-            <input type="text" asp-for="PesoLiquido" class="form-text" id="pesoLiquido">
-            @Html.ValidationMessageFor(x => x.PesoLiquido)
-        </div>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="card shadow p-4" style="width: 500px;">
+        <h2 class="text-center mb-4">Editar Produto</h2>
+        <form asp-controller="Produto" asp-action="EditarProduto" method="post">
+            <div class="mb-3">
+                <label for="codigo" class="form-label">Código</label><br />
+                <input type="text" asp-for="CodigoProduto" class="form-text form-control w-100" id="codigo">
+                @Html.ValidationMessageFor(x => x.CodigoProduto)
+            </div>
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição</label><br />
+                <input type="text" asp-for="Descricao" class="form-text form-control w-100" id="descricao">
+                @Html.ValidationMessageFor(x => x.Descricao)
+            </div>
+            <div class="mb-3">
+                <label for="codBarras" class="form-label">Código de Barras</label><br />
+                <input type="text" asp-for="CodBarras" class="form-text form-control w-100" id="codBarras">
+                @Html.ValidationMessageFor(x => x.CodBarras)
+            </div>
+            <div class="mb-3">
+                <label for="valorVenda" class="form-label">Valor de Venda</label><br />
+                <input type="text" asp-for="ValorVenda" class="form-text form-control w-100" id="valorVenda">
+                @Html.ValidationMessageFor(x => x.ValorVenda)
+            </div>
+            <div class="mb-3">
+                <label for="pesoBruto" class="form-label">Peso Bruto</label><br />
+                <input type="text" asp-for="PesoBruto" class="form-text form-control w-100" id="pesoBruto">
+                @Html.ValidationMessageFor(x => x.PesoBruto)
+            </div>
+            <div class="mb-3">
+                <label for="pesoLiquido" class="form-label">Peso Liquido</label><br />
+                <input type="text" asp-for="PesoLiquido" class="form-text form-control w-100" id="pesoLiquido">
+                @Html.ValidationMessageFor(x => x.PesoLiquido)
+            </div>
 
-        <button type="submit" class="btn btn-primary">Alterar</button>
-        <a class="btn btn-secondary" asp-controller="Produto" asp-action="Index" role="button">Voltar</a>
-    </form>
+            <button type="submit" class="btn btn-primary">Alterar</button>
+            <a class="btn btn-secondary" asp-controller="Produto" asp-action="Index" role="button">Voltar</a>
+        </form>
+    </div>
 </div>

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
 using SoftLineCRUD.Models;
 
 namespace SoftLineCRUD.Controllers
@@ -18,7 +17,7 @@ namespace SoftLineCRUD.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (loginModel.Login == "adm" && loginModel.Senha == "123") 
+                    if (loginModel.Login == "admin" && loginModel.Senha == "123456") 
                     {
                     return RedirectToAction("Index", "Home");
                     }

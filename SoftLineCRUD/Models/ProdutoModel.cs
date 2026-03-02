@@ -8,8 +8,10 @@ namespace SoftLineCRUD.Models
         [Required(ErrorMessage = "Digite o codigo do Produto!")]
         public int CodigoProduto { get; set; }
         [Required(ErrorMessage = "Digite a descrição do Produto!")]
+        [StringLength(60, ErrorMessage = "Descrição deve ter no máximo 60 caracteres.")]
         public required string Descricao { get; set; }
         [Required(ErrorMessage = "Digite o codigo de Barras!")]
+        [StringLength(14, ErrorMessage = "Código de Barras deve ter no máximo 14 caracteres.")]
         public required string CodBarras { get; set; }
         [Required(ErrorMessage = "Digite o valor de venda!")]
         public float ValorVenda { get; set; }
